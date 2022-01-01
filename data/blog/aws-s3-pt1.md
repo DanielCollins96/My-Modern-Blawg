@@ -1,14 +1,27 @@
 ---
-title: AWS Simple Storage Service (S3)
+title: AWS Simple Storage Service (S3) Part 1
 date: 2021-05-31
 tags:
   - aws
   - storage
+summary:
+  - First Part of my notes for an introductory review of AWS S3.
 ---
 
-# AWS Simple Storage Service (S3) Part 1
+## Table of Contents
 
-S3 is a flat object store, S3 is not a 'filesystem'.
+1. [Terminology](#terminology)
+2. [Storage Classes](#storage-classes)
+3. [S3 Bucket Features](#s3-bucket-features)
+4. [S3 Batch Operations](#s3-batch-operations)
+5. [S3 Access Points](#s3-access-points)
+6. [S3 Select](#s3-select)
+7. [S3 Access Control (Block Public Access)](#s3-access-control-block-public-access)
+8. [S3 Common Limits](#s3-common-limits)
+
+---
+
+**S3 is a flat object store, S3 is not a 'filesystem'.**
 
 _Reading Resources_:
 
