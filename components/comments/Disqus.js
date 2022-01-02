@@ -4,6 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 
 const Disqus = ({ frontMatter }) => {
   const [enableLoadComments, setEnabledLoadComments] = useState(true)
+  const [error, setError] = useState(null)
 
   const COMMENTS_ID = 'disqus_thread'
 
@@ -14,6 +15,7 @@ const Disqus = ({ frontMatter }) => {
       this.page.url = window.location.href
       this.page.identifier = frontMatter.slug
     }
+    // try {
     if (window.DISQUS === undefined) {
       const script = document.createElement('script')
       script.src = 'https://' + siteMetadata.comment.disqusConfig.shortname + '.disqus.com/embed.js'
@@ -24,6 +26,10 @@ const Disqus = ({ frontMatter }) => {
     } else {
       window.DISQUS.reset({ reload: true })
     }
+    // } catch (err) {
+    //   console.log(err);
+    //   setError(err)
+    // }
   }
 
   return (
