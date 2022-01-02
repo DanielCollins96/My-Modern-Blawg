@@ -15,21 +15,22 @@ const Disqus = ({ frontMatter }) => {
       this.page.url = window.location.href
       this.page.identifier = frontMatter.slug
     }
-    // try {
     if (window.DISQUS === undefined) {
       const script = document.createElement('script')
       script.src = 'https://' + siteMetadata.comment.disqusConfig.shortname + '.disqus.com/embed.js'
       script.setAttribute('data-timestamp', +new Date())
       script.setAttribute('crossorigin', 'anonymous')
       script.async = true
-      document.body.appendChild(script)
+      try {
+        document.body.appendChild(script)
+      } catch (err) {
+        console.log('errrrrrr')
+        console.log(err)
+        setError(err)
+      }
     } else {
       window.DISQUS.reset({ reload: true })
     }
-    // } catch (err) {
-    //   console.log(err);
-    //   setError(err)
-    // }
   }
 
   return (
