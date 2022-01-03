@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { DiscussionEmbed } from 'disqus-react'
 
 import siteMetadata from '@/data/siteMetadata'
 
@@ -37,6 +38,14 @@ const Disqus = ({ frontMatter }) => {
     <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">
       {enableLoadComments && <button onClick={LoadComments}>Load Comments</button>}
       <div className="disqus-frame" id={COMMENTS_ID} />
+      {/* <DiscussionEmbed
+        shortname={siteMetadata.comment.disqusConfig.shortname}
+        config={{
+          url: window.location.href,
+          identifier: '420',
+          title: frontMatter.title,
+        }}
+      /> */}
     </div>
   )
 }
