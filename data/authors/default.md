@@ -1,16 +1,11 @@
 ---
-name: Tails Azimuth
+name: Dan Collins
 avatar: /static/images/avatar.png
-occupation: Professor of Atmospheric Science
-company: Stanford University
-email: address@yoursite.com
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+occupation: Data Developer
+email: danmcollins96@gmail.com
+github: https://github.com/DanielCollins96
 ---
 
-Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
+The 'Owner' of this domain. I generally use SQL and Python at work, then tinker with Cloud Services and the Javascript ecosystem at home.
 
-He leads the clean energy group which develops 3D air pollution-climate models, writes differential equation solvers, and manufactures titanium plated air ballons. In his free time he bakes raspberry pi.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+This site was built with React.js (Nextjs). I'll be working on this is blog side project to try and add commenting and more. My Posts are written in markdown or "mdx", and pushed to a GitHub repo, which triggers the site to be rebuilt. I am open to receiving pull requests for posts that are tech or data related.

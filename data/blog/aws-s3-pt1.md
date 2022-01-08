@@ -6,6 +6,7 @@ tags:
   - storage
 summary:
   - First Part of my notes for an introductory review of AWS S3.
+authors: ['dancollins']
 ---
 
 ## Table of Contents
