@@ -20,7 +20,7 @@ export default function Home({ posts }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <div className="grid lg:grid-cols-[280px_1fr] gap-3 xl:gap-5 divide-y">
+      <div className="grid xl:grid-cols-[280px_1fr] gap-3 xl:gap-5 divide-y">
         <div className="">
           <AsideBio />
         </div>
