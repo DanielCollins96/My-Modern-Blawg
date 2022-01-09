@@ -1,6 +1,6 @@
 ---
 name: Dan Collins
-avatar: /static/images/avatar.png
+avatar: /static/images/linkedinHeadshot.jpeg
 occupation: Data Developer
 email: danmcollins96@gmail.com
 github: https://github.com/DanielCollins96
