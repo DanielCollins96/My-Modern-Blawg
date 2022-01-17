@@ -1,3 +1,15 @@
+---
+title: Software 2.0 by Andrej Karpathy
+date: 2021-02-25
+tags:
+  - AI
+  - Machine Learning
+summary:
+  - Notes on Andrej Karpathy's presentation of Software 2.0
+authors:
+  - dancollins
+---
+
 # Intro
 
 Andrej Karpathy is a Sr. Director of AI at Tesla, his team is responsible for all nerual networks for Autopilot. His personal site is [karpathy.ai](https://karpathy.ai/ 'karpathy.ai').
