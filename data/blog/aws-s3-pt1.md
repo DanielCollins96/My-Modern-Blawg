@@ -24,6 +24,8 @@ authors: ['dancollins']
 
 **S3 is a flat object store, S3 is not a 'filesystem'.**
 
+In object storage, each object consists of data, metadata, and a key.
+
 _Reading Resources_:
 
 - [Amazon S3 Resources](https://aws.amazon.com/s3/developer-resources/)
