@@ -10,13 +10,13 @@ authors:
   - dancollins
 ---
 
-# Intro
+## Background
 
 Andrej Karpathy is a Sr. Director of AI at Tesla, his team is responsible for all nerual networks for Autopilot. His personal site is [karpathy.ai](https://karpathy.ai/ 'karpathy.ai').
 
-I heard about his Software 2.0 talk he gave from Jim Keller on episode [#162](https://www.youtube.com/watch?v=G4hL5Om4IJ4&ab_channel=LexFridman '#162') of the Lex Fridman podcast.
+The notes in this post are for Karpathy's 2018 presentation about ["The Software 2.0 Stack"](https://www.youtube.com/watch?v=y57wwucbXR8). I heard about the talk from Jim Keller who mentioned it on episode [#162](https://www.youtube.com/watch?v=G4hL5Om4IJ4&ab_channel=LexFridman '#162') of the Lex Fridman podcast.
 
-## Software
+## How Software Has Been Developed
 
 Humans have developed fire, agriculture, mechanical machines, and electrical ones.
 
@@ -40,6 +40,10 @@ In 2012 they decided to move towards laying out a skeleton CNN architecture, and
 The trend in computer vision is that... For best results, as long as you have a evaluation criteria (loss/accuracy in a test set), the best thing to do is to design less and leave more to optimization.
 
 ![Computer Vision Chart](/static/images/Computer-Vision-Chart.png)
+
+### AlphaZero vs Stockfish
+
+5:30
 
 The workforce for Software 2.0 consists of labelers and. For Tesla with 'infinite data', the question isnt "how do I train on that data, the question is how do I pick and choose intelligently what I should label, as I have to pay for it".
 
