@@ -6,12 +6,10 @@ const projectsData = [
     href: 'https://nhlstats.ca/',
   },
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'Starlink Remake Site',
+    description: `I rebuilt part of the Starlink company site. It includes animations and a contact form.`,
+    imgSrc: '/static/images/Starlink-Home.png',
+    href: 'https://starlink-site.vercel.app/',
   },
 ]
 
