@@ -25,7 +25,7 @@ export default function Home({ posts }) {
           <AsideBio />
         </div>
         <div className="flex flex-col divide-y divide-gray-200 dark:divide-gray-700">
-          <div className="pt-2 pb-8 space-y-2 md:space-y-4">
+          <div className="pt-2 pb-4 space-y-2 md:space-y-4">
             <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:leading-10 md:text-4xl md:leading-14">
               Latest Posts
             </h1>
@@ -38,7 +38,7 @@ export default function Home({ posts }) {
             {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
               const { slug, date, title, summary, tags } = frontMatter
               return (
-                <li key={slug} className="py-12">
+                <li key={slug} className="py-6">
                   <article>
                     <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                       <dl>
