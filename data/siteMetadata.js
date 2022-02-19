@@ -1,8 +1,8 @@
 const siteMetadata = {
   title: 'Technology and Programming Blog',
   author: 'Dan Collins',
-  headerTitle: 'TechDive',
-  description: 'A Technology and Data inspired blog made using Next.js with Tailwind for styling',
+  headerTitle: 'Dan Collins',
+  description: 'A portfolio site of my interests and projects',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
