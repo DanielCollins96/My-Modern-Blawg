@@ -1,5 +1,5 @@
 ---
-title: Neural Network Algorithms
+title: Explaining Neural Network Algorithms
 date: 2021-8-31
 tags:
   - AI
@@ -7,6 +7,7 @@ tags:
 summary: 'A brief introduction to neural networks and some of the most popular algorithms.'
 authors:
   - dancollins
+slug: explaining-neural-network-algorithms
 ---
 
 ## Table of Contents
@@ -56,7 +57,7 @@ Inputs are usually:
 
 - Non-Temporal (Don't have multiple related frames over time)
 - Tensors
-- Havd complex spatial hidden structure
+- Have complex spatial hidden structure
 
 A CNN is great when working with:
 
