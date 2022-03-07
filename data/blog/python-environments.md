@@ -7,6 +7,7 @@ tags:
   - pip
 authors:
   - dancollins
+slug: packages-virtual-environments-python
 ---
 
 ## Table of Contents
@@ -29,18 +30,6 @@ _Reading Resource_: [Installing Python Modules](https://docs.python.org/3/instal
 
 > `pip` is the standard package manager for python. Packages are installed from the pypi library. Starting with Python 3.4, it is included by default with the Python binary installers.
 
-## Virtual Environments
-
-> A virtual environment is a semi-isolated Python environment that allows packages to be installed for use by a particular application, rather than being installed system wide.
-
-_Reading Resource_: [Virtual Environments and Packages](https://docs.python.org/3/tutorial/venv.html)
-
-venv:
-
-> Python applications will often use packages and modules that don’t come as part of the standard library. Applications will sometimes need a specific version of a library, because the application may require that a particular bug has been fixed or the application may be written using an obsolete version of the library’s interface.
-
-`virtualenv` or `venv` (venv on Python 3.3 or newer) is a way
-
 pip:
 
 `pip` is the reference Python package manager. It’s used to install and update packages
@@ -57,6 +46,18 @@ pip can be updated on Mac or Linux by running:
 pip install --upgrade pip
 ```
 
+## Virtual Environments
+
+> A virtual environment is a semi-isolated Python environment that allows packages to be installed for use by a particular application, rather than being installed system wide.
+
+_Reading Resource_: [Virtual Environments and Packages](https://docs.python.org/3/tutorial/venv.html)
+
+venv:
+
+> Python applications will often use packages and modules that don’t come as part of the standard library. Applications will sometimes need a specific version of a library, because the application may require that a particular bug has been fixed or the application may be written using an obsolete version of the library’s interface.
+
+The `virtualenv` or `venv` (venv on Python 3.3 or newer) is a way to create an isolated environment for a Python application. This is done by creating a self-contained directory tree that contains a Python installation for a particular version of Python, plus a number of additional packages. One system can have many virtual environments on it.
+
 ## Creating and Using a Virtual Environment
 
 _Reading Resource_: [Installing packages using pip and virtual environments](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
@@ -70,17 +71,19 @@ _Reading Resource_: [Installing packages using pip and virtual environments](htt
 
 Installing On macOS and Linux:
 
-`python3 -m pip install --user virtualenv`
+`python3 -m pip install virtualenv`
 
 Installing On Windows:
 
-`py -m pip install --user virtualenv`
+`py -m pip install virtualenv`
+
+You can optionally add the --user flag to install virtualenv for the current user.
 
 ### Creating a Virtual Environment
 
-A virtual environment is essentially a isolated Python installation and then install packages into that virtual installation.
+A virtual environment is essentially a isolated Python installation with its own specific packages.
 
-It is **always** recommended to use a virtual environment while developing Python applications.
+It is generally recommended to use a virtual environment while developing Python applications due to the added isolation and reproducibility.
 
 To create a virtual environment, go to your project’s directory and run venv (or virtualenv for Python 2).
 
