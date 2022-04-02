@@ -1,5 +1,5 @@
 ---
-title: How-To Manually Run a Github Action
+title: How-To Manually Run a Github Action Workflow
 summary: How to enable the manual running of a Github Action in a Github repository.
 date: 2022-03-21
 tags:
@@ -7,9 +7,9 @@ tags:
   - devops
 ---
 
-## Manually Running a Github Action
+## Manually Running a Github Action Workflow
 
-This posts covers how to add the option of running a workflow though the Actions tab on a Github repository.
+This posts covers how to enable the manual running of a workflow in the Actions tab on a Github repository. This is useful for when you want to run a workflow, but want to avoid having to push/pull to Github to trigger it running. This can be done by using the `workflow_dispatch` event.
 
 ### The `workflow_dispatch` Event
 
