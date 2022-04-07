@@ -66,7 +66,7 @@ A CNN is great when working with:
 
 ## Recurrent Neural Networks
 
-Recurrent Neural Networks are used in scenarios with temporality (like natural language processing). RNNs pass the results of a network to the next step, basically cambine and pass the context of a network to a subsequent timestep. Context can be passed forward or tracked backward (confirming what a previous word was).
+Recurrent Neural Networks are used in scenarios with temporality (like natural language processing). RNNs pass the results of a network to the next step, basically combine and pass the context of a network to a subsequent timestep. Context can be passed forward or tracked backward (confirming what a previous word was).
 
 RNNs work well for sequence prediction problems. RNNs are great when working with:
 

@@ -12,7 +12,7 @@ authors:
 
 ## Background
 
-Andrej Karpathy is a Sr. Director of AI at Tesla, his team is responsible for all nerual networks for Autopilot. His personal site is [karpathy.ai](https://karpathy.ai/ 'karpathy.ai').
+Andrej Karpathy is a Sr. Director of AI at Tesla, his team is responsible for all neural networks for Autopilot. His personal site is [karpathy.ai](https://karpathy.ai/ 'karpathy.ai').
 
 The notes in this post are for Karpathy's 2018 presentation about ["The Software 2.0 Stack"](https://www.youtube.com/watch?v=y57wwucbXR8). I heard about the talk from Jim Keller who mentioned it on episode [#162](https://www.youtube.com/watch?v=G4hL5Om4IJ4&ab_channel=LexFridman '#162') of the Lex Fridman podcast.
 
@@ -43,11 +43,11 @@ The trend in computer vision is that... For best results, as long as you have a 
 
 ### AlphaZero vs Stockfish
 
-5:30
+Starts around 5:30
 
-The workforce for Software 2.0 consists of labelers and. For Tesla with 'infinite data', the question isnt "how do I train on that data, the question is how do I pick and choose intelligently what I should label, as I have to pay for it".
+The workforce for Software 2.0 consists of labelers and for Tesla with its 'infinite data', the question isn't "how do I train on that data, the question is how do I pick and choose intelligently what I should label, as I have to pay for it".
 
-The problem of determining what is worth labeling, and determining when the network is uncertain and mispredicts, leads to a type of 'data engine'. To fix these problems the data engine combines microservices around the infrastructure and around massaging the data (ie. bubbling up problems from the data sets). A problem for Tesla is avoiding windshield wipers activating in tunnels.
+The problem is of determining what is worth labeling, and determining when the network is uncertain and mis-predicts. This problem requires a type of 'data engine', the data engine combines micro-services around the infrastructure and around massaging the data (ie. bubbling up problems from the data sets). An example of a mis-prediction problem for Tesla is windshield wipers activating in tunnels, and noticing that type of misbehavior.
 
 ![Data Engine Diagram](/static/images/Karpathy-software-2-0-loop.png)
 
@@ -63,11 +63,11 @@ The IDE's for Software 2.0 can use:
 
 ### Chris Lattner
 
-Chris (swift) was interviewed by Lex. Its not clear to Chris that software 2.0 is the answer to every problem, but it is a new paradigm. Programming paradigm shifts like **structured** programming (from go to's to if then's), **functional** programming like lisp (Higher order functions), **object oriented** programming (encapsulation, subclasses, inheritance), **generic** programming (code reuse, instantiations), **differential** programming (functions generate variants/derivatives of another function).
+Chris (swift) was interviewed by Lex. Its not clear to Chris that software 2.0 is the answer to every problem, but it is a new paradigm. Chris notes that programming paradigms are many, and shift like **structured** programming (from go to's to if then's), **functional** programming like lisp (Higher order functions), **object oriented** programming (encapsulation, subclasses, inheritance), **generic** programming (code reuse, instantiations), **differential** programming (functions generate variants/derivatives of another function).
 
-Deep learning is powerful but imperative programming is too. You wouldn't write a computers bootloader with a deep learning model, as DL is hardware and energy intensive. If you care about magnitudes of energy use, other programming paradigms are important.
+Deep learning is powerful but imperative programming is powerful too. You wouldn't write a computers bootloader with a deep learning model, as DL is hardware and energy intensive. If you care about magnitudes of energy use, other programming paradigms are important.
 
-Software 1.0 includes things like testing, continous integration, deployments, validation.
+There are also Software 1.0 fundamentals that include things like testing, continous integration, deployments, validation. All of which are important to Software 2.0.
 
 ## Links
 

@@ -18,7 +18,7 @@ _Reading Resource_ - [Change your authoritative nameservers (Full setup)](https:
 
 ## Steps for Forwarding Emails to a Domain Address with Cloudflare
 
-Once your domain's DNS records are set up you can forward emails to your domain very easily, the screenshot below shows the email routing page where you can specify the custom address under your domain and the destination address. When that is configuraed Cloudflare then generates all the MX Records for you.
+Once your domain's DNS records are set up you can forward emails to your domain very easily, the screenshot below shows the email routing page where you can specify the custom address under your domain and the destination address. When that is configured Cloudflare then generates all the MX Records for you.
 
 ![Email Routing](/static/images/Cloudflare-Email-Routing.png)
 
