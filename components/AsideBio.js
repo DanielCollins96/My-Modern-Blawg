@@ -7,7 +7,7 @@ const AsideBio = () => {
       <img
         src="/static/images/headshot.jpeg"
         alt=""
-        className="rounded-full w-56 m-auto shadow-[0_0_7px]"
+        className="rounded-full w-44 m-auto shadow-[0_0_7px]"
       />
       <p className="font-bold text-4xl mb-2 mt-2">Learning + Writing</p>
       <p className="text-md leading-6 text-gray-700 dark:text-gray-200">
