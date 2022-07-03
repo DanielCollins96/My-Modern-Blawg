@@ -1,6 +1,7 @@
 ---
 title: Using Packages and Virtual Environments in Python
 date: 2021-07-3
+lastmod: '2022-07-03'
 summary: Short post describing how to use packages and virtual environments in Python.
 tags:
   - python
