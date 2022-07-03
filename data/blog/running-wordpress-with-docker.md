@@ -1,5 +1,5 @@
 ---
-title: Using WordPress with Docker
+title: Run WordPress with Docker
 date: 2022-03-02
 summary: 'Setting up a WordPress site with Docker'
 tags: ['docker', 'wordpress', 'webdev']

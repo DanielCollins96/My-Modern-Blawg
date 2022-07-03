@@ -8,9 +8,9 @@ summary:
   - Steps for forwarding emails to an account on a domain with Cloudflare.
 ---
 
-This post will cover the process of forwarding emails from a personal domain using Cloudflare. I am documenting Cloudflare's process as it is where I usually manage my DNS records.
+This post will cover the process of forwarding emails from a personal domain using Cloudflare. I picked Cloudflare's process as it is where I usually manage my DNS records.
 
-Once you own a domain address you likely can receive emails sent to accounts aliased under that domain. Domain registrars which utilize a CPanel usually include a Forwarding section, where email addresses for that domain can be routed to another email (your personal gmail inbox for example). For this domain I have it set so I can receive emails to my personal Gmail from the 'dc@dancollins.ca' address and I'll show how that's done.
+Once you own a domain address you are able to route emails sent to accounts under the domain to your own personal email account. Domain registrars which utilize a CPanel usually include a Forwarding section, where email addresses for that domain can be routed to. For this domain I have it set so I can receive emails to my personal Gmail from the 'dc@dancollins.ca' address and I'll show how that's done.
 
 _Reading Resource_ - [Change your authoritative nameservers (Full setup)](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/)
 
