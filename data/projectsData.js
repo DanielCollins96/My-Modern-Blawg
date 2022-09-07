@@ -3,7 +3,7 @@ const projectsData = [
     title: 'Realtime NHL Stats App',
     description: 'My simple NHL stats app, built with Next.js and AWS Amplify',
     imgSrc: '/static/images/nhlstatshome.png',
-    href: 'https://nextjs-hockey.vercel.app/',
+    href: 'https://the-nhl.com/',
   },
   {
     title: 'Remake of the Starlink Landing Page',
