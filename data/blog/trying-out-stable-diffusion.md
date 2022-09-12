@@ -8,17 +8,17 @@ tags:
 
 # Stable Diffusion
 
-## What it it
+## What is it
 
 Stable Diffusion is a text-to-image model that generates images from a text 'prompt' you provide. Recently another text-to-image model called DALL-E from OpenAI garnered widespread awe and attention for its ability to generate impressive custom images.
 
-Stable Diffusion differs in that it is open source, while DALL-E is available for a cost through an API. Stable Diffusion is also a different ML architecture than DALL-E since DALL-E was trained using GPT-3 (transformers), while Stable Diffusion is a diffusion model, the same as Google's recent text-to-image model Imagen.
+Stable Diffusion differs from DALL-E in that it is open source, while DALL-E is only available through an API for a price. Stable Diffusion is also a different ML architecture than DALL-E since DALL-E was trained using GPT-3 (transformers), while Stable Diffusion is a diffusion model, the same as Google's recent text-to-image model Imagen.
 
-**Diffusion Models** try to 'de-noise' gaussian noise, step by step. After a labelled image has been distored through gaussian noise it will look like a pixelated fuzzy picture, Diffusion models reverse the noise and after each step the picture will lose noise and be more realistic.
+**Diffusion Models** try to 'de-noise' gaussian noise, step by step. After a labelled image has been distorted through gaussian noise it will look like a pixelated fuzzy picture. Diffusion models reverse the noise in separate steps, after each step the picture will lose noise and look more realistic.
 
-Link - https://www.youtube.com/watch?v=fbLgFrlTnGU&t=425s&ab_channel=AriSeff
+**Video about Diffusion** - https://www.youtube.com/watch?v=fbLgFrlTnGU&t=425s&ab_channel=AriSeff
 
-Stable Diffusion incorporates three components for implementing 'latent diffusion' which is a faster and more efficient form of diffusion. Latent diffusion utilizes three components, an autoencoder (VAE), a U-Net, and a text encoder CLIP. Using these components Stable Diffusion receives a text-prompt and then outputs an image of that prompt.
+Stable Diffusion incorporates three components for implementing 'latent diffusion' which is a faster and efficient form of diffusion. Latent diffusion utilizes three components, an autoencoder (VAE), a U-Net, and a text encoder CLIP. Using these components Stable Diffusion receives a text-prompt and then outputs an image of that prompt.
 
 ## How to Run
 
