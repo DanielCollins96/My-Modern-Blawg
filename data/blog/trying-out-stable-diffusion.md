@@ -1,5 +1,5 @@
 ---
-title: Checking Out Stable Diffusion and its Built in Safety Feature
+title: Checking Out Stable Diffusion
 summary: Blog post explaining what generative AI models like 'Stable Diffusion' are and also showing how to run it.
 date: 2022-09-12
 tags:
