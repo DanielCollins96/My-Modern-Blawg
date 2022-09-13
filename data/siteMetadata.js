@@ -2,10 +2,11 @@ const siteMetadata = {
   title: 'Technology and Programming Blog',
   author: 'Dan Collins',
   headerTitle: 'Dan Collins',
-  description: 'A portfolio site of my interests and projects',
+  description:
+    'A portfolio site for my interests and projects related to programming and technology',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://dancollins.ca',
   siteRepo: 'https://github.com/DanielCollins96/My-Modern-Blawg.git',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
