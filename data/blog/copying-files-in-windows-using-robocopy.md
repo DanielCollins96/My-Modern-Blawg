@@ -2,7 +2,7 @@
 title: 'Copying Files in Windows Using Robocopy'
 summary: 'Showing how to use the Robocopy Windows command'
 date: '2022-05-22'
-tags: [windows, how-to, cli]
+tags: [windows, how-to]
 ---
 
 The command `robocopy` is a standard way of copying files between directories in Windows, `robocopy` is an improvement over commands like `copy` and `xcopy`.

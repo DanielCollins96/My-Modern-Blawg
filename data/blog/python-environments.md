@@ -5,7 +5,6 @@ lastmod: '2022-07-03'
 summary: Short post describing how to use packages and virtual environments in Python.
 tags:
   - python
-  - pip
 authors:
   - dancollins
 slug: packages-virtual-environments-python

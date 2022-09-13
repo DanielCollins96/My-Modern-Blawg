@@ -3,7 +3,7 @@ title: Forwarding Emails to a Domain Address with Cloudflare
 date: 2022-04-03
 tags:
   - webdev
-  - cloudflare
+  - how-to
 summary:
   - Steps for forwarding emails to an account on a domain with Cloudflare.
 ---

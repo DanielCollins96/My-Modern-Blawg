@@ -1,15 +1,21 @@
 ---
-title: What is Stable Diffusion and How to Run It
+title: What Stable Diffusion is and How to Run It
 summary: Blog post explaining what 'Stable Diffusion' is and how to run it. The post also describes some other text-to-image AI models.
 date: 2022-09-12
 tags:
   - AI
+  - machine-learning
+  - python
+  - code
+  - how-to
 ---
 
 ## What is Stable Diffusion
 
 Stable Diffusion (SD) is a text-to-image model that can generate or modify images from the text and image prompts you provide.
 
+![Generated Astronauts](/static/images/SD-Astronauts.png)
+{/_ <figcaption>astro</figcaption> _/}
 It is claimed that Diffusion models are superior to other generative models like Generative Adversarial Networks (GANs) and Variational Autoencoders (VAEs) for image generation. Stable Diffusion incorporates autoencoding/text-encoding steps alongside it's diffusion model to make it even more efficient than standalone diffusion.
 
 SD is similar to other text-to-image models such as DALL-E/DALL-E-2 which garnered widespread awe and attention for their ability to generate impressive custom images. Stable Diffusion is open source and that differs from DALL-E, since access to use DALL-E is provided by OpenAI through their own API. Stable Diffusion is also more computationally efficient than DALL-E, which was a GAN, since SD is a _latent diffusion_ model. [This video](https://youtu.be/nVhmFski3vg) from Two Minute Papers about Stable Diffusion goes into more depth about the model and it's relation to Dall-E.
@@ -22,8 +28,8 @@ Stable Diffusion was trained on images from the [LAION-5B](https://laion.ai/blog
 
 Stable Diffusion seems to be the combination of de-noising autoencoders and diffusion models. By utilizing Latent Diffusion's use of latent-space and cross-attention layers, SD is exceedingly efficient in text-to-image generation.
 
-[**Youtube Video Describing Diffusion** ](https://www.youtube.com/watch?v=fbLgFrlTnGU&t=425s&ab_channel=AriSeff)
-[**Youtube Video Describing Markov Chains**](https://www.youtube.com/watch?v=i3AkTO9HLXo&ab_channel=NormalizedNerd)
+- [Youtube](https://www.youtube.com/watch?v=fbLgFrlTnGU&t=425s&ab_channel=AriSeff) Video on **Diffusion**
+- [Youtube](https://www.youtube.com/watch?v=i3AkTO9HLXo&ab_channel=NormalizedNerd) Video on **Markov Chains**
 
 Compared to previous diffusion models, latent diffusion is able to "reach a near-optimal point between complexity reduction and detail preservation"[3] an Latent Diffusion research paper mentions. The efficiency gains show up in SD's ability to run on Mid/High level personal computers (recommended 10GB VRAM GPU). Stable Diffusion incorporates three components for implementing 'latent diffusion': an autoencoder (VAE), a [U-Net](https://arxiv.org/abs/1505.04597), and a text encoder CLIP [Vit-L/14](https://arxiv.org/abs/2103.00020). Using these components Stable Diffusion receives a text-prompt and then outputs an image of that prompt.
 
