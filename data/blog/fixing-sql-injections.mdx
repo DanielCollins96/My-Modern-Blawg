@@ -40,7 +40,7 @@ Heres the URL that links to that SQL Query:
 `https://www.the-nhl.com/players/8480849`
 
 And heres a malicious URL (browser will fill white space):
-`https://www.the-nhl.com/players/8480849 OR 1= 1`
+`https://www.the-nhl.com/players/8480849 OR 1=1`
 
 In the second example, the addition of `OR 1=1` makes the query select from the entire table, causing the application to crash with a 504 timeout-error.
 
@@ -73,3 +73,5 @@ let result = await conn.query(stats, [id])
 ## Conclusion
 
 It really was as simple as changing `${id}` to `$1` and providing the paramater in the second argument.
+
+Instead of crashing my Next.js app by downloading a huge pile of player data the database just ignores the request as there is no player with id ending in `OR 1=1`. Luckily my stats site has no active users or else something bad might have happened :O
