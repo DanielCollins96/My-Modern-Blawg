@@ -1,6 +1,6 @@
 ---
 title: Finding and Fixing a SQL Injection in My Website
-date: 2023-09-24
+date: 2023-09-25
 tags:
   - sql
   - security
@@ -39,7 +39,7 @@ The query above is susceptible to SQL Injection, if an attacker knows how to man
 Heres the URL that links to that SQL Query:
 `https://www.the-nhl.com/players/8480849`
 
-And heres a malicious URL (browser will fill while space):
+And heres a malicious URL (browser will fill white space):
 `https://www.the-nhl.com/players/8480849 OR 1= 1`
 
 In the second example, the addition of `OR 1=1` makes the query select from the entire table, causing the application to crash with a 504 timeout-error.
