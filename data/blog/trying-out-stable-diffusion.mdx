@@ -16,7 +16,7 @@ Stable Diffusion (SD) is a text-to-image model that can generate or modify image
 
 ![Generated Astronauts](/static/images/SD-Astronauts.png)
 
-It is claimed that Diffusion models are superior to other generative models like Generative Adversarial Networks (GANs) and Variational Autoencoders (VAEs) for image generation. Stable Diffusion incorporates autoencoding/text-encoding steps alongside it's diffusion model to make it even more efficient than standalone diffusion.
+It is claimed that Diffusion models are superior to other generative models like Generative Adversarial Networks (GANs) and Variational Autoencoders (VAEs) for image generation. Stable Diffusion incorporates autoencoding/text-encoding steps alongside its diffusion model to make it even more efficient than standalone diffusion.
 
 SD is similar to other text-to-image models such as DALL-E/DALL-E-2 which garnered widespread awe and attention for their ability to generate impressive custom images. Stable Diffusion is open source and that differs from DALL-E, since access to use DALL-E is provided by OpenAI through their own API. Stable Diffusion is also more computationally efficient than DALL-E, which was a GAN, since SD is a _latent diffusion_ model. [This video](https://youtu.be/nVhmFski3vg) from Two Minute Papers about Stable Diffusion goes into more depth about the model and it's relation to Dall-E.
 
@@ -35,7 +35,7 @@ Compared to previous diffusion models, latent diffusion is able to "reach a near
 
 ## How to Run Stable Diffusion and Generate Images
 
-To run the Stable Diffusion 'inference pipeline' and try it's text-to-image capabilities you should have a computer with at least 10GB of ram and GPU capabilities[4]. I personally ran out of memory on my 8GB Macbook but I proceeded to use a Google Collab notebook to run the model. The Collab notebook came from huggingface and uses the model weights v1-4, check it out [here](https://colab.research.google.com/github/huggingface/notebooks/blob/main/diffusers/stable_diffusion.ipynb)
+To run the Stable Diffusion 'inference pipeline' and try its text-to-image capabilities you should have a computer with at least 10GB of ram and GPU capabilities[4]. I personally ran out of memory on my 8GB Macbook but I proceeded to use a Google Collab notebook to run the model. The Collab notebook came from huggingface and uses the model weights v1-4, check it out [here](https://colab.research.google.com/github/huggingface/notebooks/blob/main/diffusers/stable_diffusion.ipynb)
 
 ## The Code
 
@@ -58,7 +58,7 @@ with autocast("cuda"):
   # image = pipe(prompt, num_inference_steps=75, generator=generator).images[0]
 ```
 
-Change the prompt to whatever you want and then run the code, but know that their is a NSFW checker in the library (look for the function check_safety()). My prompt created this:
+Change the prompt to whatever you want and then run the code, but know that there is an NSFW checker in the library (look for the function check_safety()). My prompt created this:
 
 ![My Stable Diffusion Image](/static/images/AI-Flames-Jersey.png)
 
@@ -79,7 +79,7 @@ with autocast("cuda"):
 
 The 'skills' of this model may seem threatening for artistic creatives but I see it as empowering more than anything, this is a tool for creatives. The business world is forever chasing a future with AI helpers that 'assist' people... Well Standard Diffusion is as compelling as any AI software 'tool' I've ever used. Using this model alongside thoughtful prompts and image inputs enables fast prototyping of high quality image outputs. The iterative workflow shown [here](https://www.reddit.com/r/StableDiffusion/comments/xcjj7u/sd_img2img_after_effects_i_generated_2_images_and/) of an artist using After Effects and SD looks incredible. The back and forth nature of some visual edits being done by a person and then prompting a text-to-image model to further develop an image seems empowering and even natural.
 
-The state of the art text-to-image models have shown incredible ability to use words, images and different custom vectors as inputs for producing images, and I suspect this ability will be one of the most important tools in any AI assistants toolbox in the not too distant future. To their credit, text-to-image models appear among the best AI models for having an embedded fun-factor and an obvious application value, even in simple examples. What also excites me about Stable Diffusion is it's lower computational constraints, enabling text-to-image locally due to public weights[5]. I will be looking for other ways to work with Stable Diffusion to improve my prompts, inputs, and ideations.
+The state of the art text-to-image models have shown incredible ability to use words, images and different custom vectors as inputs for producing images, and I suspect this ability will be one of the most important tools in any AI assistants toolbox in the not too distant future. To their credit, text-to-image models appear among the best AI models for having an embedded fun-factor and an obvious application value, even in simple examples. What also excites me about Stable Diffusion is its lower computational constraints, enabling text-to-image locally due to public weights[5]. I will be looking for other ways to work with Stable Diffusion to improve my prompts, inputs, and ideations.
 
 ## Resources
 

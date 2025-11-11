@@ -22,4 +22,4 @@ Once your domain's DNS records are set up you can forward emails to your domain 
 
 ![Email Routing](/static/images/Cloudflare-Email-Routing.png)
 
-**Receiving emails is that easy**, but sending emails I have yet to do haha (attempted changing the reply-to settings in Gmail but that was just Reply-to), so I will update If I figure that out.
+**Receiving emails is that easy**, but sending emails I have yet to do haha (attempted changing the reply-to settings in Gmail but that was just Reply-to), so I will update if I figure that out.

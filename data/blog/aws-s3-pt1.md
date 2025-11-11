@@ -22,7 +22,7 @@ authors: ['dancollins']
 
 ---
 
-**S3 is a flat object store, S3 is not a 'filesystem'.**
+**S3 is a flat object store — S3 is not a filesystem.**
 
 In object storage, each object consists of data, metadata, and a key.
 
@@ -37,7 +37,7 @@ _Reading Resources_:
 ### Buckets
 
 - Identify where an object belongs
-- Objects are store in buckets in lexicographical order
+- Objects are stored in buckets; object keys are listed in lexicographical order
 
 ### Object
 
@@ -198,13 +198,13 @@ _Reading Resource_: [Blocking public access to your Amazon S3 storage
 ## S3 Common Limits
 
 - Hard limit of 1,000 buckets per account
-- No limit to the amount of data/objects in a bucket
-- Hard limit of a 100 event notifications and 1,000 lifecycle rules per bucket
-- Bucket policies are limited to 20KB
-- Maximum object size is 5TB
-- Maximum HTTP put request size is 5GB
-- Maximum size for a multi-part upload is 5GB
-- Maximum number of parts for a multi-part upload is 10,000
+- No limit to the total number of objects that can be stored in a bucket
+- Hard limit of 100 event notifications and 1,000 lifecycle rules per bucket
+- Bucket policies are limited to 20 KB
+- Maximum object size: 5 TB (use multipart upload for large objects)
+- Single PUT request maximum payload: 5 GB
+- Multipart upload supports objects up to 5 TB; individual parts can be up to 5 GB each
+- Maximum number of parts for a multipart upload is 10,000
 
 _Reading Resource_: [Best practices design patterns: optimizing Amazon S3 performance](https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html)
 

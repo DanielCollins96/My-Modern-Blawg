@@ -11,7 +11,7 @@ summary:
 
 _This post is a quick run through of how I confirmed a SQL Injection vulnerability I had and how I resolved it_
 
-This weekend, I added draft data to my NHL website project ([link](https://www.the-nhl.com/)) and in the process confirmed a sneaking suspicion I had. To my alarm, but not entirely to my surprise, I uncovered SQL Injection vulnerabilities on my site, which queries a Postgres database for the stats, including team and player data.
+This weekend, I added draft data to my NHL website project ([link](https://nextjs-hockey.vercel.app/)) and in the process confirmed a sneaking suspicion I had. To my alarm, but not entirely to my surprise, I uncovered SQL Injection vulnerabilities on my site, which queries a Postgres database for the stats, including team and player data.
 
 In the process of lazily adding another raw database query to my Next.js projects lib folder, I decided I might as well try and inject some "malicious" SQL into my sites URL, I then promptly crashed my live application, simply from selecting all on a 500k+ row table.
 
@@ -37,10 +37,10 @@ WHERE p.id = ${id}
 The query above is susceptible to SQL Injection, if an attacker knows how to manipulate the `${id}` variable from the front end than they can cause the database to run malicious code.
 
 Heres the URL that links to that SQL Query:
-`https://www.the-nhl.com/players/8480849`
+`https://nextjs-hockey.vercel.app/players/8480849`
 
 And heres a malicious URL (browser will fill white space):
-`https://www.the-nhl.com/players/8480849 OR 1=1`
+`https://nextjs-hockey.vercel.app/players/8480849 OR 1=1`
 
 In the second example, the addition of `OR 1=1` makes the query select from the entire table, causing the application to crash with a 504 timeout-error.
 

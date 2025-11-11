@@ -78,7 +78,7 @@ RNNs work well for sequence prediction problems. RNNs are great when working wit
 
 In Summary:
 
-A multilayer Perceptron can be used for relatively simple tasks in a non neural-network way, i.e. linear regression, logistic regression, and random forrest.
+A multilayer Perceptron can be used for relatively simple tasks in a non neural-network way, i.e. linear regression, logistic regression, and random forest.
 
 A Convolution Neural Network (CNN) can be used for discovering some internal structures of a dataset. This is used prominently in computer vision.
 

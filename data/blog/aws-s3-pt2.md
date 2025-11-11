@@ -30,8 +30,8 @@ This is my second part of notes from a AWS learn course. These notes cover some 
 
 ### S3 and Storage Gateway
 
-- Storage Gateway volumes and snapshots are stores in S3 as large objects.
-- File gateways mount S3 buckets as Network File Systems (NFS) or Server Message Block (SMB) shares.
+-- Storage Gateway volumes and snapshots are stored in S3 as large objects.
+-- File gateways mount S3 buckets as Network File Systems (NFS) or Server Message Block (SMB) shares.
 
 ### S3 and Snowball
 
