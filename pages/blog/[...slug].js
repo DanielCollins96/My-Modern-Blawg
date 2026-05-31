@@ -2,16 +2,16 @@ import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
-import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
+import { getAllFilesFrontMatter, getFileBySlug } from '@/lib/mdx'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
-  const posts = getFiles('blog')
+  const posts = await getAllFilesFrontMatter('blog')
   return {
     paths: posts.map((p) => ({
       params: {
-        slug: formatSlug(p).split('/'),
+        slug: p.slug.split('/'),
       },
     })),
     fallback: false,
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const allPosts = await getAllFilesFrontMatter('blog')
-  const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
+  const postIndex = allPosts.findIndex((post) => post.slug === params.slug.join('/'))
   const prev = allPosts[postIndex + 1] || null
   const next = allPosts[postIndex - 1] || null
   const post = await getFileBySlug('blog', params.slug.join('/'))

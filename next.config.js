@@ -1,6 +1,8 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const isCloudflare = process.env.CF_PAGES === '1' || process.env.BUILD_TARGET === 'cloudflare'
+const path = require('path')
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
@@ -55,9 +57,19 @@ const securityHeaders = [
 module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+
+  images: {
+    ...(isCloudflare && {
+      loader: 'akamai',
+      path: '',
+    }),
+    unoptimized: isCloudflare,
+  },
+
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+
   async headers() {
     return [
       {
@@ -66,6 +78,7 @@ module.exports = withBundleAnalyzer({
       },
     ]
   },
+
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|mp4)$/i,
@@ -93,6 +106,11 @@ module.exports = withBundleAnalyzer({
         'react-dom/test-utils': 'preact/test-utils',
         'react-dom': 'preact/compat',
       })
+    }
+
+    if (isCloudflare) {
+      config.resolve.alias = config.resolve.alias || {}
+      config.resolve.alias['next/image'] = path.resolve(__dirname, 'components/NoopImage.js')
     }
 
     return config
