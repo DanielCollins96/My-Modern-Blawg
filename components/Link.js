@@ -17,7 +17,9 @@ const CustomLink = ({ href, ...rest }) => {
     return <a href={href} {...rest} />
   }
 
-  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+  // Allow external project links to pass referrer data to destination analytics.
+  // eslint-disable-next-line react/jsx-no-target-blank
+  return <a target="_blank" rel="noopener" href={href} {...rest} />
 }
 
 export default CustomLink
