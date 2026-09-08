@@ -1,34 +1,70 @@
-export default async (req, res) => {
-  const { email } = req.body
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' })
+import { requireNewsletterEmail, newsletterError } from '@/lib/newsletter'
+
+const handler = async (req, res) => {
+  const email = requireNewsletterEmail(req, res)
+  if (!email) return
+
+  const API_KEY = process.env.KLAVIYO_API_KEY
+  const LIST_ID = process.env.KLAVIYO_LIST_ID
+
+  if (!API_KEY || !LIST_ID) {
+    return newsletterError(res, 500, 'There was an error subscribing to the list.')
   }
 
   try {
-    const API_KEY = process.env.KLAVIYO_API_KEY
-    const LIST_ID = process.env.KLAVIYO_LIST_ID
     const response = await fetch(
-      `https://a.klaviyo.com/api/v2/list/${LIST_ID}/subscribe?api_key=${API_KEY}`,
+      'https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/',
       {
         method: 'POST',
         headers: {
           Accept: 'application/json',
+          Authorization: `Klaviyo-API-Key ${API_KEY}`,
           'Content-Type': 'application/json',
+          revision: '2024-10-15',
         },
-        // You can add additional params here i.e. SMS, etc.
-        // https://developers.klaviyo.com/en/reference/subscribe
         body: JSON.stringify({
-          profiles: [{ email: email }],
+          data: {
+            type: 'profile-subscription-bulk-create-job',
+            attributes: {
+              profiles: {
+                data: [
+                  {
+                    type: 'profile',
+                    attributes: {
+                      email,
+                      subscriptions: {
+                        email: {
+                          marketing: {
+                            consent: 'SUBSCRIBED',
+                          },
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+            relationships: {
+              list: {
+                data: {
+                  type: 'list',
+                  id: LIST_ID,
+                },
+              },
+            },
+          },
         }),
       }
     )
-    if (response.status >= 400) {
-      return res.status(400).json({
-        error: `There was an error subscribing to the list.`,
-      })
+
+    if (!response.ok) {
+      return newsletterError(res, 400, 'There was an error subscribing to the list.')
     }
+
     return res.status(201).json({ error: '' })
   } catch (error) {
-    return res.status(500).json({ error: error.message || error.toString() })
+    return newsletterError(res, 500, 'There was an error subscribing to the list.')
   }
 }
+
+export default handler

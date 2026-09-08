@@ -6,21 +6,37 @@ import CustomLink from './Link'
 import TOCInline from './TOCInline'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
+import PostLayout from '@/layouts/PostLayout'
+import PostSimple from '@/layouts/PostSimple'
+import AuthorLayout from '@/layouts/AuthorLayout'
+import ListLayout from '@/layouts/ListLayout'
+
+export const layouts = {
+  PostLayout,
+  PostSimple,
+  AuthorLayout,
+  ListLayout,
+}
 
 export const MDXComponents = {
   Image,
   TOCInline,
   a: CustomLink,
   pre: Pre,
-  BlogNewsletterForm: BlogNewsletterForm,
-  wrapper: ({ components, layout, ...rest }) => {
-    const Layout = require(`../layouts/${layout}`).default
-    return <Layout {...rest} />
-  },
+  BlogNewsletterForm,
 }
 
 export const MDXLayoutRenderer = ({ layout, mdxSource, ...rest }) => {
   const MDXLayout = useMemo(() => getMDXComponent(mdxSource), [mdxSource])
+  const Layout = layouts[layout]
 
-  return <MDXLayout layout={layout} components={MDXComponents} {...rest} />
+  if (!Layout) {
+    throw new Error(`Unknown layout: ${layout}`)
+  }
+
+  return (
+    <Layout {...rest}>
+      <MDXLayout components={MDXComponents} />
+    </Layout>
+  )
 }

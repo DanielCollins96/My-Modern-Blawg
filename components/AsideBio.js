@@ -1,12 +1,15 @@
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
+import Image from '@/components/Image'
 
 const AsideBio = () => {
   return (
     <aside className="flex flex-col gap-4 py-2 px-3  mb-3  border-slate-400 ">
-      <img
+      <Image
         src="/static/images/headshot.jpeg"
-        alt=""
+        alt="Dan Collins"
+        width={176}
+        height={176}
         className="rounded-full w-44 m-auto shadow-[0_0_7px]"
       />
       <p className="font-bold text-4xl mb-2 mt-2">Learning + Writing</p>

@@ -1,17 +1,19 @@
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
-  const { email } = req.body
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' })
+import { requireNewsletterEmail, newsletterError } from '@/lib/newsletter'
+
+const handler = async (req, res) => {
+  const email = requireNewsletterEmail(req, res)
+  if (!email) return
+
+  const API_KEY = process.env.BUTTONDOWN_API_KEY
+  const API_URL = process.env.BUTTONDOWN_API_URL
+
+  if (!API_KEY || !API_URL) {
+    return newsletterError(res, 500, 'There was an error subscribing to the list.')
   }
 
   try {
-    const API_KEY = process.env.BUTTONDOWN_API_KEY
-    const buttondownRoute = `${process.env.BUTTONDOWN_API_URL}subscribers`
-    const response = await fetch(buttondownRoute, {
-      body: JSON.stringify({
-        email,
-      }),
+    const response = await fetch(`${API_URL}subscribers`, {
+      body: JSON.stringify({ email }),
       headers: {
         Authorization: `Token ${API_KEY}`,
         'Content-Type': 'application/json',
@@ -19,12 +21,14 @@ export default async (req, res) => {
       method: 'POST',
     })
 
-    if (response.status >= 400) {
-      return res.status(500).json({ error: `There was an error subscribing to the list.` })
+    if (!response.ok) {
+      return newsletterError(res, 500, 'There was an error subscribing to the list.')
     }
 
     return res.status(201).json({ error: '' })
   } catch (error) {
-    return res.status(500).json({ error: error.message || error.toString() })
+    return newsletterError(res, 500, 'There was an error subscribing to the list.')
   }
 }
+
+export default handler
