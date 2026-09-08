@@ -6,6 +6,7 @@ import Image from '@/components/Image'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
+import CommentCount from '@/components/comments/CommentCount'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
@@ -60,6 +61,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               )}
               <div>
                 <PageTitle>{title}</PageTitle>
+                <div className="pt-3">
+                  <CommentCount slug={slug} />
+                </div>
               </div>
             </div>
           </header>

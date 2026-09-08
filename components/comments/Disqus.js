@@ -1,51 +1,57 @@
-import React, { useState } from 'react'
-import { DiscussionEmbed } from 'disqus-react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
 
 const Disqus = ({ frontMatter }) => {
-  const [enableLoadComments, setEnabledLoadComments] = useState(true)
+  const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(null)
 
   const COMMENTS_ID = 'disqus_thread'
+  const shortname = siteMetadata.comment.disqusConfig.shortname
 
-  function LoadComments() {
-    setEnabledLoadComments(false)
+  const LoadComments = useCallback(() => {
+    if (!shortname) {
+      setError('Disqus shortname is not configured.')
+      return
+    }
 
     window.disqus_config = function () {
-      this.page.url = window.location.href
+      this.page.url = `${siteMetadata.siteUrl}/blog/${frontMatter.slug}`
       this.page.identifier = frontMatter.slug
     }
-    if (window.DISQUS === undefined) {
-      const script = document.createElement('script')
-      script.src = 'https://' + siteMetadata.comment.disqusConfig.shortname + '.disqus.com/embed.js'
-      script.setAttribute('data-timestamp', +new Date())
-      script.setAttribute('crossorigin', 'anonymous')
-      script.async = true
-      try {
-        document.body.appendChild(script)
-      } catch (err) {
-        console.log('errrrrrr')
-        console.log(err)
-        setError(err)
-      }
-    } else {
+
+    const embedSrc = `https://${shortname}.disqus.com/embed.js`
+    const alreadyInjected = document.querySelector(`script[src="${embedSrc}"]`)
+
+    if (window.DISQUS) {
       window.DISQUS.reset({ reload: true })
+    } else if (!alreadyInjected) {
+      const script = document.createElement('script')
+      script.src = embedSrc
+      script.setAttribute('data-timestamp', String(+new Date()))
+      script.async = true
+      script.onerror = () => setError('Failed to load comments.')
+      document.body.appendChild(script)
     }
-  }
+
+    setLoaded(true)
+  }, [frontMatter.slug, shortname])
+
+  useEffect(() => {
+    LoadComments()
+  }, [LoadComments])
 
   return (
-    <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">
-      {enableLoadComments && <button onClick={LoadComments}>Load Comments</button>}
+    <div className="pt-6 pb-6 text-gray-700 dark:text-gray-300">
+      {!loaded && (
+        <div className="text-center">
+          <button type="button" onClick={LoadComments}>
+            Load Comments
+          </button>
+        </div>
+      )}
       <div className="disqus-frame" id={COMMENTS_ID} />
-      {/* <DiscussionEmbed
-        shortname={siteMetadata.comment.disqusConfig.shortname}
-        config={{
-          url: window.location.href,
-          identifier: '420',
-          title: frontMatter.title,
-        }}
-      /> */}
+      {error && <p className="text-center">{error}</p>}
     </div>
   )
 }
