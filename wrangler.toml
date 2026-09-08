@@ -1,0 +1,5 @@
+# Cloudflare Pages uses this for the static export output.
+# Build command in the dashboard should stay: npm run build
+name = "my-modern-blawg"
+compatibility_date = "2026-09-08"
+pages_build_output_dir = "out"
