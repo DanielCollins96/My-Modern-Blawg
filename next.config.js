@@ -1,118 +1,93 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-const isCloudflare = process.env.CF_PAGES === '1' || process.env.BUILD_TARGET === 'cloudflare'
 const path = require('path')
+const isCloudflare = process.env.CF_PAGES === '1' || process.env.BUILD_TARGET === 'cloudflare'
 
-// You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' www.google-analytics.com https://www.googletagmanager.com;
-  style-src 'self' 'unsafe-inline' *.googleapis.com cdn.jsdelivr.net;
-  img-src * blob: data:;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+  img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com;
   media-src 'none';
-  connect-src *;
-  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net;
-  frame-src giscus.app
+  connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com;
+  font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+  frame-src https://giscus.app https://utteranc.es;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
 `
 
 const securityHeaders = [
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\n/g, ''),
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
   },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
     value: 'strict-origin-when-cross-origin',
   },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
     key: 'X-Frame-Options',
     value: 'DENY',
   },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
   {
     key: 'X-Content-Type-Options',
     value: 'nosniff',
   },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
   {
     key: 'X-DNS-Prefetch-Control',
     value: 'on',
   },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=31536000; includeSubDomains; preload',
   },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
   {
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
 ]
 
-module.exports = withBundleAnalyzer({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-
-  images: {
-    ...(isCloudflare && {
-      loader: 'akamai',
-      path: '',
-    }),
-    unoptimized: isCloudflare,
-  },
-
+  pageExtensions: ['js', 'jsx'],
+  poweredByHeader: false,
+  outputFileTracingRoot: path.join(__dirname),
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
-
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders,
-      },
-    ]
+  images: {
+    unoptimized: isCloudflare,
   },
-
-  webpack: (config, { dev, isServer }) => {
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|mp4)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            publicPath: '/_next',
-            name: 'static/media/[name].[hash].[ext]',
-          },
-        },
-      ],
-    })
+  webpack: (config) => {
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
 
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
     })
 
-    if (!dev && !isServer) {
-      // Replace React with Preact only in client production build
-      Object.assign(config.resolve.alias, {
-        'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-      })
-    }
-
-    if (isCloudflare) {
-      config.resolve.alias = config.resolve.alias || {}
-      config.resolve.alias['next/image'] = path.resolve(__dirname, 'components/NoopImage.js')
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i
     }
 
     return config
   },
-})
+}
+
+if (isCloudflare) {
+  nextConfig.output = 'export'
+} else {
+  nextConfig.headers = async () => [
+    {
+      source: '/(.*)',
+      headers: securityHeaders,
+    },
+  ]
+}
+
+module.exports = withBundleAnalyzer(nextConfig)

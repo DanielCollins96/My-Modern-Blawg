@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
-import smoothscroll from 'smoothscroll-polyfill'
 
 const ScrollTopAndComment = () => {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    smoothscroll.polyfill()
     const handleWindowScroll = () => {
       if (window.scrollY > 50) setShow(true)
       else setShow(false)
@@ -19,7 +17,7 @@ const ScrollTopAndComment = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   const handleScrollToComment = () => {
-    document.getElementById('comment').scrollIntoView()
+    document.getElementById('comment')?.scrollIntoView()
   }
   return (
     <div className="fixed flex-col hidden gap-3 right-8 bottom-8 md:flex">

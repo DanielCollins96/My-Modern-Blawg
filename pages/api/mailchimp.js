@@ -1,25 +1,28 @@
 import mailchimp from '@mailchimp/mailchimp_marketing'
+import { requireNewsletterEmail, newsletterError } from '@/lib/newsletter'
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.MAILCHIMP_API_SERVER, // E.g. us1
+  server: process.env.MAILCHIMP_API_SERVER,
 })
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
-  const { email } = req.body
+const handler = async (req, res) => {
+  const email = requireNewsletterEmail(req, res)
+  if (!email) return
 
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' })
+  if (!process.env.MAILCHIMP_AUDIENCE_ID) {
+    return newsletterError(res, 500, 'There was an error subscribing to the list.')
   }
 
   try {
-    const test = await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID, {
+    await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID, {
       email_address: email,
       status: 'subscribed',
     })
     return res.status(201).json({ error: '' })
   } catch (error) {
-    return res.status(500).json({ error: error.message || error.toString() })
+    return newsletterError(res, 500, 'There was an error subscribing to the list.')
   }
 }
+
+export default handler
