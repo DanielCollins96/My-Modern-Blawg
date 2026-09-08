@@ -7,6 +7,7 @@ import formatDate from '@/lib/utils/formatDate'
 import AsideBio from '@/components/AsideBio'
 
 import NewsletterForm from '@/components/NewsletterForm'
+import CommentCount from '@/components/comments/CommentCount'
 
 const MAX_DISPLAY = 5
 
@@ -68,7 +69,7 @@ export default function Home({ posts }) {
                             {summary}
                           </div>
                         </div>
-                        <div className="text-base font-medium leading-6">
+                        <div className="flex flex-wrap items-center gap-x-4 text-base font-medium leading-6">
                           <Link
                             href={`/blog/${slug}`}
                             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
@@ -76,6 +77,7 @@ export default function Home({ posts }) {
                           >
                             Read more &rarr;
                           </Link>
+                          <CommentCount slug={slug} />
                         </div>
                       </div>
                     </div>

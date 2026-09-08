@@ -6,16 +6,16 @@ const isCloudflare = process.env.CF_PAGES === '1' || process.env.BUILD_TARGET ==
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
-  img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://disqus.com https://*.disqus.com https://*.disquscdn.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://disqus.com https://*.disqus.com https://*.disquscdn.com;
+  img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://disqus.com https://*.disqus.com https://*.disquscdn.com;
   media-src 'none';
-  connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com;
-  font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
-  frame-src https://giscus.app https://utteranc.es;
+  connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://disqus.com https://*.disqus.com https://*.disquscdn.com wss://*.disqus.com;
+  font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://*.disquscdn.com;
+  frame-src https://giscus.app https://utteranc.es https://disqus.com https://*.disqus.com https://*.disquscdn.com;
   object-src 'none';
   base-uri 'self';
-  form-action 'self';
+  form-action 'self' https://disqus.com https://*.disqus.com;
   frame-ancestors 'none';
 `
 

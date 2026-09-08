@@ -5,6 +5,7 @@ import { BlogSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
 import Comments from '@/components/comments'
+import CommentCount from '@/components/comments/CommentCount'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
 export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
@@ -28,6 +29,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </dl>
               <div>
                 <PageTitle>{title}</PageTitle>
+                <div className="pt-3">
+                  <CommentCount slug={frontMatter.slug} />
+                </div>
               </div>
             </div>
           </header>

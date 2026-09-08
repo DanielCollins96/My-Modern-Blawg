@@ -4,6 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
+import CommentCount from '@/components/comments/CommentCount'
 
 export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }) {
   const [searchValue, setSearchValue] = useState('')
@@ -76,6 +77,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                     <div className="prose text-gray-500 max-w-none dark:text-gray-400">
                       {summary}
                     </div>
+                    <CommentCount slug={slug} />
                   </div>
                 </article>
               </li>
