@@ -22,6 +22,15 @@ process.on('SIGTERM', () => {
   process.exit(1)
 })
 
+if (fs.existsSync(tmpDir)) {
+  if (fs.existsSync(apiDir)) {
+    throw new Error(
+      `Cannot build: both ${apiDir} and ${tmpDir} exist. Remove the stale temp directory at ${tmpDir} and try again.`
+    )
+  }
+  fs.renameSync(tmpDir, apiDir)
+}
+
 if (fs.existsSync(apiDir)) {
   fs.renameSync(apiDir, tmpDir)
 }
