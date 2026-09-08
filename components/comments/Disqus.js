@@ -15,22 +15,33 @@ const Disqus = ({ frontMatter }) => {
       return
     }
 
-    window.disqus_config = function () {
+    const config = function () {
       this.page.url = `${siteMetadata.siteUrl}/blog/${frontMatter.slug}`
       this.page.identifier = frontMatter.slug
     }
+
+    window.disqus_config = config
 
     const embedSrc = `https://${shortname}.disqus.com/embed.js`
     const alreadyInjected = document.querySelector(`script[src="${embedSrc}"]`)
 
     if (window.DISQUS) {
-      window.DISQUS.reset({ reload: true })
+      window.DISQUS.reset({
+        reload: true,
+        config,
+      })
     } else if (!alreadyInjected) {
       const script = document.createElement('script')
       script.src = embedSrc
       script.setAttribute('data-timestamp', String(+new Date()))
       script.async = true
-      script.onerror = () => setError('Failed to load comments.')
+      script.onerror = () => {
+        setError('Failed to load comments.')
+        setLoaded(false)
+        if (script.parentNode) {
+          script.parentNode.removeChild(script)
+        }
+      }
       document.body.appendChild(script)
     }
 
